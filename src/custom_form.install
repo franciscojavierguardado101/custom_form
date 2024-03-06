@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Implement hook_schema().
+ * Schema functions do not have any arguments
+ * This code, when placed in a .install file of a Drupal module, will create a custom table named user_details in the Drupal database when the module is installed. 
+ * This table will have fields for storing user details such as name, email, and gender.
+ * Return statement should be: return $schema;
+ */
+
+function custom_form_schema() {
+    $schema['user_details'] = [
+        'description' => 'contains user details',
+        'fields' => [
+            'id' => [
+                'description' => 'Holds the id',
+                'type' => 'serial',
+                'not null' => true,
+                'unsigned' => true,
+            ],
+            'name' => [
+                'description' => 'Username',
+                'type' => 'varchar',
+                'length' => 50,
+                'not null' => true,
+            ],
+            'mail' => [
+                'description' => 'User Email id',
+                'type' => 'varchar',
+                'length' => 50,
+                'not null' => true,
+            ],
+            'gender' => [
+                'description' => 'User Gender',
+                'type' => 'varchar',
+                'length' => 50,
+                'not null' => true,
+            ],
+        ],
+        'primary key' => ['id'],
+    ];
+    return $schema;
+}
